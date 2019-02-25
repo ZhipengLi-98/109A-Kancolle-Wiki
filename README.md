@@ -17,6 +17,8 @@ Sara夜战飞机任务链.pdf todo arsenalahm
 
 ## 肝船推荐
 
+7-2肝cvl配置.pdf
+
 ---
 
 ## 内容格式/规范
