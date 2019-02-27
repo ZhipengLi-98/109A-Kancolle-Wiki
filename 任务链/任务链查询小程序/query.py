@@ -2,7 +2,7 @@
 #import urllib.request
 import re
 import sys
-#import graphviz
+import graphviz
 
 '''
 #在线获取
@@ -11,10 +11,10 @@ html = bytes.decode(html_src.read())
 '''
 '''
 #存储至文件
-file = open("src.txt", "w", encoding="utf-8")
+file = open("mission.data", "w", encoding="utf-8")
 file.write(bytes.decode(html_src.read()))
 '''
-file = open("src.txt", "r", encoding="utf-8")
+file = open("mission.data", "r", encoding="utf-8")
 html = file.read()
 
 re_str = "<tr>.*?</tr>"
@@ -72,14 +72,26 @@ while len(res_l) > cnt:
 res_l.reverse()
 for n in res_l:
     print(d2[n])
+
+command = input()
+
+if command == "save":
+    name = sys.argv[1] + ".data"
+    link = open(name, "w", encoding="utf-8")
+    for i in res_l:
+        link.write(d2[i])
+
 '''
-#任务链存储为图像
-#需要安装graphviz
-g = graphviz.Digraph("result")
-for k in d:
-    g.node(k)
-for k in d:
-    for v in d[k]:
-        g.edge(v, k)
-g.view("result")
+elif command == "save image":
+    #任务链存储为图像
+    #需要安装graphviz
+    image = sys.argv[1] + ".pdf"
+    g = graphviz.Digraph("result")
+    for k in d:
+        g.node(k)
+    for k in d:
+        for v in d[k]:
+            g.edge(v, k)
+    # g.render(image)
+    g.view("result.pdf")
 '''
